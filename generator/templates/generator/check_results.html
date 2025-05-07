@@ -1,0 +1,10 @@
+<h1>Результаты</h1>
+{% for res in results %}
+  <h3>Задание {{ res.task.task_type }}</h3>
+  <p>{{ res.task.question_text|linebreaks }}</p>
+  <p>Ваш ответ: {{ res.user_answer }}</p>
+  <p>Правильный ответ: {{ res.task.correct_answer }}</p>
+  <p>{% if res.is_correct %}✅ Верно{% else %}❌ Неверно{% endif %}</p>
+  {% if res.task.explanation %}<p><em>{{ res.task.explanation }}</em></p>{% endif %}
+  <hr>
+{% endfor %}

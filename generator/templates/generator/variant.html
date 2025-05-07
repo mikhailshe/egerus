@@ -1,0 +1,10 @@
+<h1>Вариант ЕГЭ</h1>
+<form method="post" action="{% url 'check_variant' %}">
+  {% csrf_token %}
+  {% for task in variant %}
+    <h3>Задание {{ task.task_type }}</h3>
+    <p>{{ task.question_text|linebreaks }}</p>
+    <input type="text" name="answer_{{ forloop.counter }}" required><br><br>
+  {% endfor %}
+  <button type="submit">Проверить</button>
+</form>
